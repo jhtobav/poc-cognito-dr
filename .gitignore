@@ -1,6 +1,7 @@
 # Distribution / packaging
 .Python
 build/
+env/
 develop-eggs/
 dist/
 downloads/
@@ -22,5 +23,4 @@ var/
 .idea
 
 ### Environment ###
-env/*
 !env/requirements.txt

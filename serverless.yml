@@ -12,6 +12,7 @@
 # Happy Coding!
 
 service: poc-cognito-dr
+org: jhtobav
 # app and org for use with dashboard.serverless.com
 #app: your-app-name
 #org: your-org-name
@@ -23,6 +24,7 @@ service: poc-cognito-dr
 provider:
   name: aws
   runtime: python3.8
+  region: us-east-1
 
 # you can overwrite defaults here
 #  stage: dev
@@ -58,8 +60,14 @@ provider:
 #    - exclude-me-dir/**
 
 functions:
-  hello:
-    handler: handler.hello
+  signIn:
+    handler: handler.endpoint_signIn
+    events:
+      - http:
+          path: signIn
+          method: post
+#  hello:
+#    handler: handler.hello
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details

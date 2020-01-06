@@ -31,6 +31,15 @@ provider:
 #  stage: dev
 #  region: us-east-1
 
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "cognito-idp:AdminInitiateAuth"
+      Resource: "arn:aws:cognito-idp:us-east-1:298741944526:userpool/us-east-1_HHZ3KrfPj"
+
+  iamManagedPolicies:
+    - "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+
 # you can add statements to the Lambda function's IAM Role here
 #  iamRoleStatements:
 #    - Effect: "Allow"

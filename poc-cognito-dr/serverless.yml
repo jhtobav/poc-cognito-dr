@@ -25,6 +25,7 @@ provider:
   name: aws
   runtime: python3.8
   region: us-east-1
+  stage: dev
 
 # you can overwrite defaults here
 #  stage: dev
@@ -61,7 +62,7 @@ provider:
 
 functions:
   signIn:
-    handler: handler.endpoint_signIn
+    handler: signIn.endpoint_signIn
     events:
       - http:
           path: signIn

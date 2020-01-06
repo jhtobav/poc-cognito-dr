@@ -76,6 +76,17 @@ functions:
       - http:
           path: signIn
           method: post
+
+  consumeResource:
+    handler: consumeResource.endpoint_consumeResource
+    events:
+      - http:
+          path: consumeResource
+          method: post
+          authorizer:
+            type: COGNITO_USER_POOLS
+            authorizerId:
+              Ref: ApiGatewayAuthorizer
 #  hello:
 #    handler: handler.hello
 #    The following are a few example events you can configure
@@ -117,6 +128,22 @@ functions:
 #    Define function environment variables here
 #    environment:
 #      variable2: value2
+
+resources:
+  Resources:
+    ApiGatewayAuthorizer:
+      DependsOn:
+        - ApiGatewayRestApi
+      Type: AWS::ApiGateway::Authorizer
+      Properties:
+        Name: cognito-authorizer
+        IdentitySource: method.request.header.Authorization
+        RestApiId:
+          Ref: ApiGatewayRestApi
+        Type: COGNITO_USER_POOLS
+        ProviderARNs:
+          - "arn:aws:cognito-idp:us-east-1:298741944526:userpool/us-east-1_HHZ3KrfPj"
+
 
 # you can add CloudFormation resource templates here
 #resources:

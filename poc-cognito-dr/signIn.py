@@ -63,7 +63,6 @@ def generate_response(event, status, body, headers={}):
         "password": bodyevent.get('password'),
         "signIn_response": signin_resp,
         "signIn_response_message": message
-
     }
 
     return {
